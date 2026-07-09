@@ -39,6 +39,8 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: ${{ vars.BASE_PATH || '/TrimdeskWebsite' }}
 
       - uses: actions/configure-pages@v4
+        with:
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
