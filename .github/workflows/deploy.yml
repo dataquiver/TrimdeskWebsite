@@ -32,11 +32,11 @@ jobs:
 
       - run: npm run build
         env:
-          # Set repo secrets/variables; falls back to localhost for local dev
+          # Optional repo variables (Settings -> Secrets and variables -> Actions -> Variables)
           NEXT_PUBLIC_API_URL: ${{ vars.API_URL }}
           NEXT_PUBLIC_APP_URL: ${{ vars.APP_URL }}
-          # For a project site at username.github.io/repo-name, set BASE_PATH=/repo-name
-          NEXT_PUBLIC_BASE_PATH: ${{ vars.BASE_PATH }}
+          # Pages project site lives at dataquiver.github.io/TrimdeskWebsite
+          NEXT_PUBLIC_BASE_PATH: ${{ vars.BASE_PATH || '/TrimdeskWebsite' }}
 
       - uses: actions/configure-pages@v4
 
