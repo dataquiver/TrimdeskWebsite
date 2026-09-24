@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import { features } from '@/lib/data';
@@ -32,9 +33,9 @@ export default function FeaturesPage() {
         >
           <div className="container-site grid items-center gap-12 md:grid-cols-2">
             <Reveal className={clsx(i % 2 === 1 && 'md:order-2')}>
-              <span className={`flex h-14 w-14 items-center justify-center rounded-2xl ${f.chip} ${f.chipText}`}>
-                <f.icon size={26} />
-              </span>
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white border border-line shadow-sm">
+                <Image src={f.iconImage} alt={f.name} width={40} height={40} className="h-9 w-9 object-contain" />
+              </div>
               <h2 className="mt-5 text-3xl font-bold tracking-tight">{f.name}</h2>
               <p className="mt-4 text-[16px] leading-relaxed text-ink-secondary">{f.long}</p>
               <ul className="mt-6 space-y-3">
@@ -52,39 +53,39 @@ export default function FeaturesPage() {
               </Link>
             </Reveal>
 
-            {/* visual mockup placeholder */}
-            <Reveal delay={0.1} className={clsx(i % 2 === 1 && 'md:order-1')}>
-              <div className="relative rounded-card-lg bg-brand-gradient p-1 shadow-xl">
-                <div className="rounded-[20px] bg-white p-6">
-                  <div className="mb-4 flex items-center gap-2">
-                    <span className={`flex h-9 w-9 items-center justify-center rounded-lg ${f.chip} ${f.chipText}`}>
-                      <f.icon size={17} />
-                    </span>
-                    <span className="text-sm font-bold text-ink">{f.name}</span>
-                  </div>
-                  {[80, 62, 90, 55].map((w, r) => (
-                    <div key={r} className="mb-3 flex items-center gap-3 rounded-lg bg-section p-3">
-                      <span className={`h-8 w-8 rounded-lg ${f.chip}`} />
-                      <div className="flex-1">
-                        <div className="h-2.5 rounded bg-slate-200" style={{ width: `${w}%` }} />
-                        <div className="mt-1.5 h-2 w-1/3 rounded bg-slate-100" />
-                      </div>
-                      <span className="h-5 w-12 rounded-full bg-slate-100" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <Reveal delay={0.1} className={clsx('flex justify-center', i % 2 === 1 && 'md:order-1')}>
+              <Image
+                src={f.featureImage}
+                alt={f.name}
+                width={480}
+                height={400}
+                className="w-full max-w-md drop-shadow-xl"
+              />
             </Reveal>
           </div>
         </section>
       ))}
 
-      <section className="section-pad bg-brand-gradient text-center">
-        <div className="container-site">
-          <h2 className="h2-section text-white">All eight modules. One free trial.</h2>
-          <Link href="/register/" className="btn-white mt-8">
-            Get Started Free <ArrowRight size={17} />
-          </Link>
+      <section className="section-pad bg-brand-gradient overflow-hidden">
+        <div className="container-site grid items-center gap-10 md:grid-cols-2">
+          <Reveal className="text-center md:text-left">
+            <h2 className="h2-section text-white">All eight modules. One free trial.</h2>
+            <p className="mt-4 text-lg text-blue-50/90">
+              Start your 14-day free trial today — no credit card required.
+            </p>
+            <Link href="/register/" className="btn-white mt-8">
+              Get Started Free <ArrowRight size={17} />
+            </Link>
+          </Reveal>
+          <Reveal delay={0.1} className="flex justify-center">
+            <Image
+              src="/images/hero-modules.webp"
+              alt="All QuiverDesk modules"
+              width={460}
+              height={380}
+              className="w-full max-w-sm drop-shadow-2xl"
+            />
+          </Reveal>
         </div>
       </section>
     </>

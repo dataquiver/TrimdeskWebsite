@@ -7,6 +7,8 @@ export interface Feature {
   slug: string;
   name: string;
   icon: LucideIcon;
+  iconImage: string;   // path to PNG icon from BrandingCreativess/Icons
+  featureImage: string; // path to character webp from BrandingCreativess/Character_pics
   chip: string;      // tailwind bg for the icon chip
   chipText: string;  // tailwind text color for the icon
   short: string;
@@ -19,6 +21,8 @@ export const features: Feature[] = [
     slug: 'appointments',
     name: 'Appointment Booking',
     icon: CalendarCheck,
+    iconImage: '/icons/appointments.png',
+    featureImage: '/images/feat-appointments.webp',
     chip: 'bg-blue-100', chipText: 'text-blue-600',
     short: 'Schedule and manage all appointments with an easy-to-use calendar interface',
     long: 'Say goodbye to double bookings and paper diaries. QuiverDesk gives you a live calendar of every appointment across your business — bookable in seconds, visible to every staff member, and kept up to date automatically. Customers get confirmations and reminders without you lifting a finger.',
@@ -34,6 +38,8 @@ export const features: Feature[] = [
     slug: 'staff',
     name: 'Staff Management',
     icon: Users,
+    iconImage: '/icons/staff.png',
+    featureImage: '/images/feat-staff.webp',
     chip: 'bg-purple-100', chipText: 'text-purple-600',
     short: 'Add staff, assign roles, track performance and manage schedules effortlessly',
     long: 'Your team is your business. Add every staff member in minutes, give each person the right level of access, and see exactly who is delivering — from appointments handled to revenue generated. Working hours and schedules stay organised in one place.',
@@ -49,6 +55,8 @@ export const features: Feature[] = [
     slug: 'billing',
     name: 'Billing & Invoicing',
     icon: ReceiptText,
+    iconImage: '/icons/billing.png',
+    featureImage: '/images/feat-billing.webp',
     chip: 'bg-green-100', chipText: 'text-green-600',
     short: 'Create professional invoices, accept payments and track revenue in real-time',
     long: 'Turn completed work into professional invoices instantly. Record payments by cash, UPI or card, track what is paid, pending or partial, and keep a complete billing history for every customer. GST-ready tax configuration built in.',
@@ -64,6 +72,8 @@ export const features: Feature[] = [
     slug: 'analytics',
     name: 'Business Analytics',
     icon: BarChart3,
+    iconImage: '/icons/analytics.png',
+    featureImage: '/images/feat-analytics.webp',
     chip: 'bg-indigo-100', chipText: 'text-indigo-600',
     short: 'Get deep insights into your business with real-time dashboards and reports',
     long: 'Know your numbers without spreadsheets. The live dashboard shows revenue, appointments and customer activity the moment they happen, while reports reveal trends across days, weeks and months — so every decision is backed by real data.',
@@ -79,6 +89,8 @@ export const features: Feature[] = [
     slug: 'customers',
     name: 'Customer Management',
     icon: UserRound,
+    iconImage: '/icons/customers.png',
+    featureImage: '/images/feat-customers.webp',
     chip: 'bg-teal-100', chipText: 'text-teal-600',
     short: 'Build customer profiles, track visits and identify your most loyal customers',
     long: 'Every customer gets a complete profile — visit history, preferences, notes, birthdays and more. Spot your regulars, win back customers who have lapsed, and give everyone the personal touch that keeps them coming back.',
@@ -94,6 +106,8 @@ export const features: Feature[] = [
     slug: 'feedback',
     name: 'Customer Feedback',
     icon: Star,
+    iconImage: '/icons/feedback.png',
+    featureImage: '/images/feat-feedback.webp',
     chip: 'bg-amber-100', chipText: 'text-amber-600',
     short: 'Collect ratings, monitor quality and build your business reputation automatically',
     long: 'Feedback is how good businesses become great ones. Collect ratings and reviews after every visit, watch service quality trends over time, celebrate your top-rated staff and act on complaints before they cost you customers.',
@@ -109,6 +123,8 @@ export const features: Feature[] = [
     slug: 'crm',
     name: 'CRM & Lead Management',
     icon: Target,
+    iconImage: '/icons/crm.png',
+    featureImage: '/images/feat-crm.webp',
     chip: 'bg-pink-100', chipText: 'text-pink-600',
     short: 'Track leads, follow up on time and convert more enquiries into paying customers',
     long: 'Enquiries are revenue waiting to happen. Capture every lead, schedule follow-up reminders so nothing slips through, and see the full communication history for each contact. Segment customers by visit frequency to focus your attention where it matters.',
@@ -124,6 +140,8 @@ export const features: Feature[] = [
     slug: 'notifications',
     name: 'Smart Notifications',
     icon: MessageSquareMore,
+    iconImage: '/icons/notifications.png',
+    featureImage: '/images/feat-notifications.webp',
     chip: 'bg-orange-100', chipText: 'text-orange-600',
     short: 'Send WhatsApp reminders, SMS and email confirmations to customers automatically',
     long: 'No-shows shrink dramatically when customers are reminded the right way. QuiverDesk sends WhatsApp reminders, SMS and email confirmations automatically — 24 hours and 1 hour before each appointment — plus invoices and even birthday greetings.',

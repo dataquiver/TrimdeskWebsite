@@ -32,9 +32,9 @@ export default function DashboardMockup() {
           ))}
         </div>
 
-        <div className="grid grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-5">
           {/* appointment list */}
-          <div className="col-span-3 rounded-xl border border-slate-100 p-3">
+          <div className="rounded-xl border border-slate-100 p-3 sm:col-span-3">
             <div className="mb-2 text-[11px] font-bold text-ink">Today&apos;s Appointments</div>
             {[
               { n: 'Rahul M.', s: 'Consultation', t: '10:00', c: 'bg-blue-500' },
@@ -55,7 +55,7 @@ export default function DashboardMockup() {
           </div>
 
           {/* chart */}
-          <div className="col-span-2 rounded-xl border border-slate-100 p-3">
+          <div className="rounded-xl border border-slate-100 p-3 sm:col-span-2">
             <div className="mb-2 text-[11px] font-bold text-ink">Weekly Revenue</div>
             <div className="flex h-24 items-end gap-1.5">
               {bars.map((h, i) => (

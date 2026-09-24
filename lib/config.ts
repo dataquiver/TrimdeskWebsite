@@ -3,5 +3,7 @@ export const config = {
   appUrl: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:4200',
   appName: 'QuiverDesk',
   contactEmail: 'hello@quiverdesk.com',
-  apkUrl: 'https://github.com/dataquiver/quiverdesk-mobile-/releases/latest/download/app-release.apk',
+  // Served from the website's own /downloads folder (UAT: hosted on the Azure VM).
+  // Switch back to a GitHub Releases URL for public go-live if preferred.
+  apkUrl: process.env.NEXT_PUBLIC_APK_URL || '/downloads/app-release.apk',
 };

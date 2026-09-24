@@ -1,0 +1,19 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["*.{js,css,png,jpg,jpeg,ico,svg,woff,woff2,ttf,eot,apk,zip,pdf}"]
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html",
+      "statusCode": 200
+    }
+  },
+  "globalHeaders": {
+    "cache-control": "public, max-age=0, must-revalidate"
+  },
+  "mimeTypes": {
+    ".svg": "image/svg+xml",
+    ".apk": "application/vnd.android.package-archive"
+  }
+}

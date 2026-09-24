@@ -35,7 +35,8 @@ export default function RegisterPage() {
   const [industry, setIndustry] = useState('');
   const [bizType, setBizType] = useState<{ label: string; code: string } | null>(null);
   const [form, setForm] = useState({
-    businessName: '', city: '', phone: '', businessEmail: '',
+    businessName: '', city: '', state: '', pincode: '', addressLine1: '',
+    phone: '', businessEmail: '', gstnumber: '',
     ownerName: '', ownerEmail: '', password: '', confirmPassword: '',
   });
   const [agree, setAgree] = useState(false);
@@ -54,6 +55,7 @@ export default function RegisterPage() {
       case 1: return bizType ? '' : 'Please select your business type.';
       case 2:
         if (!form.businessName.trim()) return 'Business name is required.';
+        if (!form.addressLine1.trim()) return 'Address is required.';
         if (!form.city.trim()) return 'City is required.';
         if (!/^\d{10}$/.test(form.phone.replace(/\D/g, '').slice(-10))) return 'Enter a valid 10-digit phone number.';
         if (!/\S+@\S+\.\S+/.test(form.businessEmail)) return 'Enter a valid business email.';
@@ -99,12 +101,16 @@ export default function RegisterPage() {
           businessCategory: bizType!.code,
           email: form.businessEmail.trim(),
           phoneNumber: form.phone.trim(),
+          gstNumber: form.gstnumber.trim() || null,
           ownerFirstName: nameParts[0],
           ownerLastName: nameParts.length > 1 ? nameParts.slice(1).join(' ') : null,
           ownerEmail: form.ownerEmail.trim(),
           ownerMobileNumber: form.phone.trim(),
           password: form.password,
+          addressLine1: form.addressLine1.trim() || null,
           city: form.city.trim(),
+          state: form.state.trim() || null,
+          pincode: form.pincode.trim() || null,
         }),
       });
       if (res.ok) {
@@ -235,9 +241,21 @@ export default function RegisterPage() {
                   <label className="field-label">Business Name *</label>
                   <input className="field" value={form.businessName} onChange={set('businessName')} placeholder="e.g. Smile Dental Clinic" />
                 </div>
+                <div className="sm:col-span-2">
+                  <label className="field-label">Address *</label>
+                  <input className="field" value={form.addressLine1} onChange={set('addressLine1')} placeholder="Shop no., Building, Street" />
+                </div>
                 <div>
                   <label className="field-label">City *</label>
                   <input className="field" value={form.city} onChange={set('city')} placeholder="e.g. Bangalore" />
+                </div>
+                <div>
+                  <label className="field-label">State</label>
+                  <input className="field" value={form.state} onChange={set('state')} placeholder="e.g. Karnataka" />
+                </div>
+                <div>
+                  <label className="field-label">PIN Code</label>
+                  <input className="field" type="text" maxLength={6} value={form.pincode} onChange={set('pincode')} placeholder="560001" />
                 </div>
                 <div>
                   <label className="field-label">Phone Number *</label>
@@ -246,6 +264,10 @@ export default function RegisterPage() {
                 <div className="sm:col-span-2">
                   <label className="field-label">Business Email *</label>
                   <input className="field" type="email" value={form.businessEmail} onChange={set('businessEmail')} placeholder="hello@yourbusiness.com" />
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="field-label">GST Number (GSTIN) <span className="text-xs font-normal text-slate-400">(optional)</span></label>
+                  <input className="field" value={form.gstnumber} onChange={set('gstnumber')} placeholder="e.g. 27AAPFU0939F1ZV" maxLength={15} style={{ textTransform: 'uppercase' }} />
                 </div>
               </div>
             </>
@@ -287,9 +309,11 @@ export default function RegisterPage() {
             <>
               <h2 className="text-xl font-bold">Confirm &amp; create your account</h2>
               <div className="mt-6 space-y-3 rounded-card bg-section p-6 text-[15px]">
-                <div><span className="font-semibold">Business:</span> {form.businessName} — {bizType?.label} in {form.city}</div>
+                <div><span className="font-semibold">Business:</span> {form.businessName} — {bizType?.label}</div>
+                <div><span className="font-semibold">Address:</span> {form.addressLine1}, {form.city}{form.state ? `, ${form.state}` : ''}{form.pincode ? ` - ${form.pincode}` : ''}</div>
                 <div><span className="font-semibold">Owner:</span> {form.ownerName} ({form.ownerEmail})</div>
                 <div><span className="font-semibold">Phone:</span> {form.phone}</div>
+                {form.gstnumber && <div><span className="font-semibold">GSTIN:</span> {form.gstnumber.toUpperCase()}</div>}
                 <div><span className="font-semibold">Plan:</span> Free Trial</div>
               </div>
               <label className="mt-6 flex items-start gap-3 text-sm text-ink-secondary">

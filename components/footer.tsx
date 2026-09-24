@@ -38,7 +38,7 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-slate-300">
+    <footer className="bg-footer text-slate-300">
       <div className="container-site grid gap-12 py-16 md:grid-cols-6">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2">
